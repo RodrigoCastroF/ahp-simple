@@ -51,10 +51,10 @@ Additionally, let $N$ be the number of criteria,
 and $n_{i}$ the number of subcriteria for criterion $i$.
 The structure of the list given to `solve_ahp` should be:
 
-```
-list($S$,
-     list($S_{1}$, ..., $S_{N}$),
-     list(list($S_{11}$, ..., $S_{1n_{1}}$),
-          ...,
-          list($S_{N1}$, ..., $S_{Nn_{N}}$)))
-```
+$$
+list(S,\\
+     list(S_{1}, ..., S_{N}),\\
+     list(list(S_{11}, ..., S_{1n_{1}}),\\
+          ...,\\
+          list(S_{N1}, ..., S_{Nn_{N}})))
+$$
