@@ -1,5 +1,8 @@
 source("ahp.R")
 
+# If there are no subcriteria, 
+# you need to treat the criteria as subcriteria under a single criterion
+
 criteria = matrix(c(1), 1, 1, byrow=TRUE)
 
 subcriteria = matrix(c(1,2,5, 1/2,1,3, 1/5,1/3,1), 3, 3, byrow=TRUE)
