@@ -13,7 +13,7 @@ evaluate = function(mat) {
       if (eigval > max_eigval) {
         max_eigval = eigval
         eigvec = Re(eig$vectors[,index])
-        # We normalize the eigenvector
+        # We normalize the eigenvector, so that its elements sum 1
         weights = eigvec/sum(eigvec)
       }
     }
@@ -99,8 +99,7 @@ solve_ahp = function(matrices) {
         value_in_criterion = value_in_criterion +
           weights_subcriteria[[index_criterion]][[index_subcriterion]] *
           weights_alternatives[[index_criterion]][[index_subcriterion]][[index_alternative]]
-        # en R, puedes tener sentencias de varias líneas dejando la 1ra incompleta:
-        # https://stackoverflow.com/questions/6329962/split-code-over-multiple-lines-in-an-r-script
+        # in R, you can write a multiline statement by leaving the first line incomplete: https://stackoverflow.com/questions/6329962/split-code-over-multiple-lines-in-an-r-script
       }
       value = value +
         value_in_criterion * weights_criteria[[index_criterion]]
@@ -117,27 +116,3 @@ solve_ahp = function(matrices) {
                                  alternatives=consistencies_alternatives)))
   
 }
-
-metacriterios = matrix(c(1,1/5,1/2, 5,1,3, 2,1/3,1), 3, 3, byrow=TRUE)
-
-coste = matrix(c(1,3, 1/3,1), 2, 2, byrow=TRUE)
-ubicacion = matrix(c(1,2, 1/2,1), 2, 2, byrow=TRUE)
-habitabilidad = matrix(c(1,1,4, 1,1,3, 1/4,1/3,1), 3, 3, byrow=TRUE)
-
-costes_luz = matrix(c(1,4, 1/4,1), 2, 2, byrow=TRUE)
-costes_agua = matrix(c(1,2, 1/2,1), 2, 2, byrow=TRUE)
-cercania_amigos = matrix(c(1,3, 1/3,1), 2, 2, byrow=TRUE)
-cercania_estudios = matrix(c(1,1/6, 6,1), 2, 2, byrow=TRUE)
-muebles = matrix(c(1,1, 1,1), 2, 2, byrow=TRUE)
-ventanas = matrix(c(1,1/4, 4,1), 2, 2, byrow=TRUE)
-bano = matrix(c(1,1/2, 2,1), 2, 2, byrow=TRUE)
-
-
-matrices = list(metacriterios,
-                list(coste, ubicacion, habitabilidad),
-                list(list(costes_luz, costes_agua),
-                     list(cercania_amigos, cercania_estudios),
-                     list(muebles, ventanas, bano)))
-
-resolucion = solve_ahp(matrices)
-resolucion
