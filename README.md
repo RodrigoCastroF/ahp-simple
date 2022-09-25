@@ -58,3 +58,15 @@ $$
           ...,\\
           list(S_{N1}, ..., S_{Nn_{N}})))}
 $$
+
+## Examples
+
+Find these examples in the repository:
+
+- `example1_roads.R`, where we must select one of three roads
+to transport freight, using three criteria: cost, impact, and time.
+- `example2_apartments.R`, where we must select one of two apartments,
+using these three criteria:
+costs (with the cost of electricity and water as subcriteria),
+location (with the proximity to friends and strudies as subcriteria),
+and livability (with the quality of the furniture, windows and toilet as subcriteria).
